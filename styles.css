@@ -56,3 +56,26 @@ body{background:#080808}
 @media(max-width:760px){.intro-title{font-size:clamp(58px,13vw,100px)}.intro-side-mark{right:4%;opacity:.6}.profile-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.profile-art{aspect-ratio:3/4}.profile-overlay{left:10px;bottom:12px}.profile-overlay b{font-size:clamp(13px,2.5vw,20px)}.profile-overlay small{font-size:6px;letter-spacing:.08em}.profile-name{font-size:13px}.profile-caption{font-size:9px}.dashboard-art.portrait-art{min-height:380px}.portrait-frame{height:380px;width:min(310px,80%)}}
 @media(max-width:520px){.intro-title{font-size:clamp(50px,14vw,78px);line-height:.82}.intro-eyebrow{font-size:8px;letter-spacing:.15em}.intro-subtitle{font-size:8px;letter-spacing:.1em;line-height:1.8}.intro-enter{min-width:0;width:auto;font-size:9px}.intro-side-mark{display:none}.profiles-screen{padding:95px 4% 50px}.profiles-screen h2{font-size:38px}.screen-subtitle{font-size:11px;margin-bottom:30px}.profile-grid{gap:8px}.profile-art{aspect-ratio:2/3}.profile-number{top:8px;left:8px;font-size:8px}.profile-overlay{left:8px;right:5px;bottom:9px;gap:4px}.profile-overlay b{font-size:11px}.profile-overlay small{font-size:5px;letter-spacing:.02em}.profile-name{font-size:11px;line-height:1.35}.profile-caption{font-size:8px;line-height:1.5}.profiles-footnote{font-size:7px;letter-spacing:.06em}.dashboard-art.portrait-art{min-height:350px}.portrait-frame{height:350px;width:260px}.portrait-stamp{font-size:20px}}
 @media(prefers-reduced-motion:reduce){.intro-brand,.intro-eyebrow,.intro-title span,.intro-title-outline,.intro-enter,.intro-hint,.portrait-frame{animation:none!important}}
+
+
+/* Portfolio polish: focus states, reduced-motion support and layered outfit preview */
+button:focus-visible,a:focus-visible,.portrait-frame:focus-visible{outline:2px solid #ff5962;outline-offset:4px}
+.profile-card{border-radius:3px}
+.profile-art{isolation:isolate}
+.profile-art img{z-index:0}
+.profile-overlay{pointer-events:none}
+.portrait-frame{isolation:isolate;background:radial-gradient(ellipse at 50% 25%,#353535,#101010 70%);will-change:transform}
+.manya-portrait{position:relative;z-index:2}
+.portrait-frame:before{z-index:5}
+.casual-look{z-index:3;inset:47% 0 0;opacity:0;mix-blend-mode:normal;background:linear-gradient(120deg,#1b1b1d 0%,#343438 48%,#111113 100%);clip-path:polygon(0 8%,27% 0,43% 11%,56% 11%,74% 0,100% 8%,100% 100%,0 100%);transition:opacity .8s ease,clip-path .8s ease}
+.casual-shirt{position:absolute;z-index:3;left:29%;top:48%;width:43%;height:50%;background:linear-gradient(100deg,#dedbd2,#f5f0e7 50%,#bcb7af);clip-path:polygon(18% 0,42% 9%,58% 9%,82% 0,100% 16%,84% 100%,16% 100%,0 16%);opacity:0;transform:translateY(12px);transition:opacity .8s ease,transform .8s ease;pointer-events:none}
+.casual-jacket{position:absolute;z-index:4;left:0;right:0;bottom:0;height:49%;background:linear-gradient(105deg,#161719,#34353a 48%,#101113);clip-path:polygon(0 10%,29% 0,43% 11%,56% 11%,73% 0,100% 10%,100% 100%,0 100%);opacity:0;transform:translateY(16px);transition:opacity .8s ease,transform .8s ease;pointer-events:none}
+.portrait-frame:hover .casual-look,.portrait-frame:focus-visible .casual-look{opacity:.96}
+.portrait-frame:hover .casual-shirt,.portrait-frame:focus-visible .casual-shirt{opacity:.98;transform:translateY(0)}
+.portrait-frame:hover .casual-jacket,.portrait-frame:focus-visible .casual-jacket{opacity:.98;transform:translateY(0)}
+.portrait-frame:hover .manya-portrait,.portrait-frame:focus-visible .manya-portrait{filter:saturate(1.08) contrast(1.03);transform:scale(1.025)}
+.portrait-frame:hover .portrait-stamp,.portrait-frame:focus-visible .portrait-stamp{color:#ff8e95}
+.portrait-fallback{display:none;position:absolute;inset:0;align-items:center;justify-content:center;color:#ffffff22;font-size:clamp(80px,14vw,160px);font-weight:800;letter-spacing:-.12em}
+.portrait-frame.portrait-missing .portrait-fallback{display:flex}
+.portrait-frame.portrait-missing:after{content:"ADD YOUR PORTRAIT TO assets/manya-portrait.jpg";position:absolute;z-index:6;bottom:12px;left:10px;right:10px;text-align:center;color:#ffffff70;font:7px var(--mono);letter-spacing:.08em}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
