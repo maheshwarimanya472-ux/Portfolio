@@ -79,3 +79,58 @@ button:focus-visible,a:focus-visible,.portrait-frame:focus-visible{outline:2px s
 .portrait-frame.portrait-missing .portrait-fallback{display:flex}
 .portrait-frame.portrait-missing:after{content:"ADD YOUR PORTRAIT TO assets/manya-portrait.jpg";position:absolute;z-index:6;bottom:12px;left:10px;right:10px;text-align:center;color:#ffffff70;font:7px var(--mono);letter-spacing:.08em}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+
+/* Reference-inspired polish: stronger editorial hierarchy, tactile cards and accessible motion. */
+:root{--red:#f01824;--white:#faf8f5;--soft:#b9b5b2}
+::selection{background:#f01824;color:#fff}
+.intro-brand{animation:brandReveal .9s cubic-bezier(.2,.75,.25,1) both}
+.intro-eyebrow{letter-spacing:.24em}
+.intro-title{line-height:.84;letter-spacing:-.075em}
+.intro-title span:first-child{display:block;text-shadow:0 8px 42px #e5091440}
+.intro-title-outline{-webkit-text-stroke:1px #fff9;text-shadow:0 0 34px #e509142b}
+.intro-subtitle{letter-spacing:.22em}
+.primary-button{transition:transform .25s ease,background .25s ease,box-shadow .25s ease}
+.primary-button:hover{transform:translateY(-3px);box-shadow:0 12px 36px #e509143b}
+.profile-grid{align-items:stretch}
+.profile-card{min-width:0;text-align:left;transition:transform .3s ease,filter .3s ease}
+.profile-card:hover{transform:translateY(-8px)}
+.profile-art{isolation:isolate;border:1px solid #ffffff24;box-shadow:0 18px 48px #0008}
+.profile-art img{transition:transform .65s cubic-bezier(.2,.7,.2,1),filter .35s ease}
+.profile-card:hover .profile-art img,.profile-card:focus-visible .profile-art img{transform:scale(1.06);filter:saturate(1.12)}
+.profile-overlay{background:linear-gradient(180deg,transparent 10%,#08080812 34%,#080808e8 100%)}
+.profile-name{font-size:1rem;letter-spacing:.01em}
+.profile-caption{color:#bdb8b5;line-height:1.5}
+.dashboard-hero{position:relative}
+.dashboard-copy h2{letter-spacing:-.055em;text-wrap:balance}
+.dashboard-intro,#dashboard-intro{max-width:62ch;line-height:1.8;color:#d0ccca}
+.shelf-card{border:1px solid #ffffff12;border-radius:12px;overflow:hidden;background:linear-gradient(145deg,#1b1b1b,#101010);transition:transform .28s ease,border-color .28s ease,background .28s ease}
+.shelf-card:hover,.shelf-card:focus-visible{transform:translateY(-5px);border-color:#f0182488;background:#191414}
+.shelf-thumb{min-height:180px}
+.shelf-thumb span{font-size:clamp(1.6rem,3vw,2.7rem);letter-spacing:-.06em;line-height:.95}
+.detail-panel{border-radius:12px;border:1px solid #ffffff18}
+.tag-list span{border-radius:999px}
+.contact-banner{border:1px solid #ffffff20;border-radius:16px;background:radial-gradient(ellipse at 100% 0%,#e5091424,transparent 54%),#111}
+.case-dialog{border:1px solid #ffffff24;border-radius:18px;box-shadow:0 28px 100px #000b}
+.case-dialog::backdrop{background:#000c;backdrop-filter:blur(8px)}
+.dialog-close{border-radius:50%;transition:background .2s ease}
+.dialog-close:hover{background:#ffffff18}
+a:focus-visible,button:focus-visible{outline:2px solid #ff5962;outline-offset:4px}
+@keyframes brandReveal{from{opacity:0;transform:translateY(18px) scale(.985);filter:blur(7px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+@media(max-width:700px){
+  .topbar{padding-inline:5%}
+  .topbar-right{gap:10px}
+  .availability{font-size:9px;letter-spacing:.08em}
+  .sound-toggle{font-size:9px}
+  .intro-title{font-size:clamp(3.2rem,15vw,6rem)}
+  .intro-eyebrow{font-size:9px;letter-spacing:.14em}
+  .intro-subtitle{font-size:9px;letter-spacing:.12em}
+  .profile-grid{gap:18px}
+  .profile-art{aspect-ratio:4/5}
+  .profile-caption{font-size:12px}
+  .shelf-thumb{min-height:145px}
+  .contact-banner{gap:20px;padding:24px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
