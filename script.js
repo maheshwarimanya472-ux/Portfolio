@@ -10,9 +10,26 @@ const dialog=$("#caseDialog");$$(".case-open").forEach(b=>b.addEventListener("cl
 $("#soundToggle").addEventListener("click",()=>{const b=$("#soundToggle"),on=b.textContent==="SOUND OFF";b.textContent=on?"SOUND ON":"SOUND OFF";});
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)$$(".nav-item").forEach(b=>b.classList.toggle("active",b.dataset.target===e.target.id));}),{rootMargin:"-25% 0px -60% 0px"});$$(".dashboard-main .section-block").forEach(s=>observer.observe(s));
 const introPortrait=$("#introPortrait");
-if(introPortrait){
- introPortrait.addEventListener("pointermove",e=>{if(e.pointerType==="touch"||introPortrait.classList.contains("is-spinning"))return;const r=introPortrait.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5;const y=(e.clientY-r.top)/r.height-.5;introPortrait.style.transform="rotateY("+(x*15)+"deg) rotateX("+(-y*9)+"deg)";});
- introPortrait.addEventListener("pointerleave",()=>{introPortrait.style.transform="";});
- introPortrait.addEventListener("click",()=>{introPortrait.classList.remove("is-spinning");void introPortrait.offsetWidth;introPortrait.classList.add("is-spinning");setTimeout(()=>introPortrait.classList.remove("is-spinning"),1350);});
+const introScreen=$("#home");
+if(introPortrait&&introScreen){
+ const movePortrait=e=>{
+  if(e.pointerType==="touch")return;
+  const r=introScreen.getBoundingClientRect();
+  const px=Math.max(0,Math.min(100,((e.clientX-r.left)/r.width)*100));
+  const py=Math.max(0,Math.min(100,((e.clientY-r.top)/r.height)*100));
+  introScreen.style.setProperty("--pointer-x",px+"%");
+  introScreen.style.setProperty("--pointer-y",py+"%");
+  if(!introPortrait.classList.contains("is-spinning")){
+   const pr=introPortrait.getBoundingClientRect();
+   const x=(e.clientX-(pr.left+pr.width/2))/Math.max(pr.width/2,1);
+   const y=(e.clientY-(pr.top+pr.height/2))/Math.max(pr.height/2,1);
+   introPortrait.style.transform="translate3d("+(-x*12)+"px,"+(-y*7)+"px,0) rotateY("+(x*7)+"deg) rotateX("+(-y*3)+"deg)";
+   const img=introPortrait.querySelector("img");
+   if(img)img.style.transform="translate3d("+(x*9)+"px,"+(y*5)+"px,0) scale(1.025)";
+  }
+ };
+ introScreen.addEventListener("pointermove",movePortrait);
+ introScreen.addEventListener("pointerleave",()=>{introPortrait.style.transform="";introScreen.style.setProperty("--pointer-x","68%");introScreen.style.setProperty("--pointer-y","44%");const img=introPortrait.querySelector("img");if(img)img.style.transform="";});
+ introPortrait.addEventListener("click",()=>{introPortrait.classList.remove("is-spinning");void introPortrait.offsetWidth;introPortrait.classList.add("is-spinning");const img=introPortrait.querySelector("img");if(img){img.style.animation="portraitSpin 1.4s cubic-bezier(.2,.7,.25,1)";setTimeout(()=>img.style.animation="",1450);}setTimeout(()=>introPortrait.classList.remove("is-spinning"),1450);});
  introPortrait.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();introPortrait.click();}});
 }
