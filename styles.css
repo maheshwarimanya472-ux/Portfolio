@@ -16,3 +16,39 @@
 .hero-socials{position:absolute;z-index:4;right:3vw;top:39%;display:flex;flex-direction:column;gap:17px}.hero-socials a{display:grid;place-items:center;width:34px;height:34px;border:1px solid #ffffff4a;border-radius:4px;color:#fff;font-weight:800;font-size:19px;background:#0004;transition:background .2s,transform .2s}.hero-socials a:hover{background:#ed102b;transform:translateX(-3px)}
 .hero-scroll{position:absolute;bottom:27px;right:4.1vw;color:#ffffffa0;font:10px var(--mono);letter-spacing:.15em}.hero-scroll span{color:#f20b2f;font-size:16px;margin-left:12px}.intro-screen .screen-index{left:4.1vw;bottom:29px}
 @media(max-width:700px){.intro-screen{padding:120px 7vw 100px}.hero-nav{height:72px;padding:0 6vw}.hero-logo{font-size:18px}.hero-logo span{display:none}.hero-nav-links{gap:13px}.hero-nav-links a{font-size:9px}.hero-copy{width:100%;margin-top:0}.intro-title.hero-name{font-size:clamp(3.5rem,14vw,6rem);line-height:.98}.hero-copy .hero-description{font-size:14px}.hero-socials{right:6vw;top:auto;bottom:70px;flex-direction:row}.hero-socials a{width:30px;height:30px}.hero-scroll{display:none}.hero-copy .eyebrow{font-size:9px;line-height:1.8}.hero-actions{flex-wrap:wrap}.hero-primary,.hero-secondary{padding:15px 17px}.intro-screen .screen-index{left:6vw}}
+
+/* Netflix-inspired profile picker and interactive hero portrait */
+.topbar{display:none}
+.intro-screen{justify-content:space-between;gap:3vw;padding-right:7vw}
+.hero-copy{width:min(720px,61%);flex:1 1 60%;position:relative;z-index:2}
+.intro-portrait-wrap{position:relative;z-index:2;width:clamp(230px,28vw,390px);flex:0 0 auto;margin:15px 2vw 0 0;perspective:1000px}
+.intro-portrait{position:relative;aspect-ratio:4/5;width:100%;border-radius:48% 48% 10px 10px;overflow:hidden;border:1px solid #ffffff48;background:linear-gradient(145deg,#45151e,#101014 75%);box-shadow:0 25px 80px #0009,0 0 45px #f20b2f20;transform-style:preserve-3d;transition:transform .25s ease,box-shadow .3s ease;cursor:pointer;outline:none}
+.intro-portrait:before{content:"";position:absolute;z-index:3;inset:0;pointer-events:none;background:linear-gradient(130deg,#ffffff26,transparent 24% 72%,#f20b2f24)}
+.intro-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;z-index:2;transition:transform .7s cubic-bezier(.2,.8,.2,1),filter .4s;transform-origin:50% 35%}
+.intro-portrait:hover,.intro-portrait:focus-visible{box-shadow:0 30px 90px #000b,0 0 55px #f20b2f35}
+.intro-portrait:hover img,.intro-portrait:focus-visible img{animation:portraitFloat 2.2s ease-in-out infinite;filter:saturate(1.08)}
+.intro-portrait.is-spinning img{animation:portraitSpin 1.25s cubic-bezier(.2,.7,.25,1)}
+.intro-portrait.portrait-fallback .portrait-initials{display:grid}
+.intro-portrait .portrait-initials{font-size:clamp(55px,8vw,100px);color:#ffffff20}
+.portrait-ring{position:absolute;z-index:4;inset:10px;border:1px solid #ffffff32;border-radius:inherit;pointer-events:none}
+.portrait-hover-note{display:block;margin-top:15px;text-align:center;color:#d9b6bd;font:9px var(--mono);letter-spacing:.13em;line-height:1.7}
+@keyframes portraitFloat{0%,100%{transform:scale(1.025) rotateY(-7deg) rotateZ(-.5deg)}50%{transform:scale(1.045) rotateY(7deg) rotateZ(.5deg)}}
+@keyframes portraitSpin{0%{transform:rotateY(0deg) scale(1)}45%{transform:rotateY(180deg) scale(.94)}100%{transform:rotateY(360deg) scale(1)}}
+.profiles-screen{display:none;min-height:100vh;height:100svh;align-items:center;justify-content:center;padding:60px 24px;background:#141414;text-align:center}
+.profiles-screen.active{display:flex;animation:reveal .45s ease both}
+.netflix-profiles{width:min(850px,100%);margin:0 auto}
+.netflix-profiles>.eyebrow{color:#888;margin-bottom:20px;font-size:10px}
+.netflix-profiles h2{font-size:clamp(2.2rem,5vw,3.4rem);font-weight:500;letter-spacing:-.045em;margin:0 0 40px;color:#f5f5f5}
+.netflix-profile-grid{display:flex;justify-content:center;gap:clamp(18px,3.6vw,44px);margin:0 auto 58px}
+.netflix-profile{width:clamp(105px,13vw,150px);padding:0;border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:12px;color:#aaa;cursor:pointer}
+.netflix-avatar{width:100%;aspect-ratio:1;display:grid;place-items:center;border:3px solid transparent;transition:transform .2s,border-color .2s,filter .2s;box-shadow:0 0 0 1px #000}
+.avatar-pink{background:linear-gradient(145deg,#d53c9b,#e35bb8)}.avatar-red{background:linear-gradient(145deg,#d93422,#e96a5e)}.avatar-yellow{background:linear-gradient(145deg,#edc544,#f4df7b)}
+.netflix-profile:hover .netflix-avatar,.netflix-profile:focus-visible .netflix-avatar{transform:scale(1.06);border-color:#fff;filter:brightness(1.08)}
+.netflix-profile-name{font-size:clamp(12px,1.3vw,15px);transition:color .2s}
+.netflix-profile:hover .netflix-profile-name,.netflix-profile:focus-visible .netflix-profile-name{color:#fff}
+.smile-face{position:relative;width:70%;height:50%}.smile-face i{position:absolute;top:16%;width:13%;aspect-ratio:1;background:#fff;border-radius:50%;box-shadow:0 0 2px #fff8}.smile-face i:first-child{left:6%}.smile-face i:nth-child(2){right:6%}
+.smile-face b{position:absolute;left:22%;right:22%;top:48%;height:31%;border-bottom:5px solid white;border-radius:0 0 60% 60%;transform:rotate(2deg)}
+.manage-profiles{border:1px solid #777;background:transparent;color:#aaa;padding:12px 26px;font:11px var(--mono);letter-spacing:.14em;transition:border-color .2s,color .2s}
+.manage-profiles:hover{border-color:#fff;color:#fff}.profiles-screen .profiles-footnote{color:#696969;margin-top:42px;font-size:9px}
+@media(max-width:800px){.intro-screen{align-items:center;gap:20px;padding:115px 7vw 85px}.hero-copy{width:58%;flex-basis:58%}.intro-portrait-wrap{width:31vw;margin-right:0}.hero-socials{right:2vw}.hero-nav{padding:0 5vw}.hero-nav-links{gap:16px}}
+@media(max-width:600px){.intro-screen{height:auto;min-height:100svh;flex-direction:column;justify-content:center;align-items:flex-start;padding:115px 7vw 75px;gap:26px}.hero-copy{width:100%;flex:0 0 auto}.intro-title.hero-name{font-size:clamp(3rem,13vw,5rem)}.intro-portrait-wrap{width:min(62vw,260px);align-self:center;margin:0 auto}.hero-socials{right:6vw;top:auto;bottom:28px;flex-direction:row}.hero-nav-links{gap:10px}.hero-nav-links a{font-size:8px}.hero-nav{height:68px}.netflix-profile-grid{gap:14px;margin-bottom:44px}.netflix-profile{width:27vw;max-width:125px}.netflix-profiles h2{margin-bottom:32px}.profiles-screen .profiles-footnote{font-size:8px}}
