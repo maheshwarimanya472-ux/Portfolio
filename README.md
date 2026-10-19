@@ -1,22 +1,12 @@
 # Manya Maheshwari — Digital Marketing Portfolio
 
-A responsive, cinematic portfolio with three ways to explore Manya's work: recruiter, connector, and marketing-professional profiles.
-
-## What is included
-- Animated introduction and profile selection screen
-- Experience, selected work, skills, and collaboration details
-- Three independent brand strategy case studies
-- Responsive layouts, keyboard focus states, and reduced-motion support
-- Plain HTML, CSS, and JavaScript; no build step required
+Cinematic, Netflix-inspired portfolio with an animated opening, three audience-specific profile journeys, selected work, skills, and independent brand case studies.
 
 ## Run locally
-Open `index.html` in a browser.
+Open `index.html` in a browser. No build step is required.
 
-## Deploy with Vercel
-Import `maheshwarimanya472-ux/Portfolio` into Vercel. Use the **Other** framework preset with no build command and no output directory.
+## Deploy
+Import this repository into Vercel as a static site (Other preset, no build command).
 
-## Personalise before sharing
-- Add your portrait at `assets/manya-portrait.jpg` to replace the monogram fallback.
-- Replace any sample experience or project details that are not ready to be public.
-- Add your LinkedIn URL and links to published work when ready.
-- The brand case studies are independent analysis, not commissioned brand work.
+## Portrait
+Add your portrait at `assets/manya-portrait.jpg` to display it in the dashboard. Verify experience details and add links to published work and LinkedIn before sharing.
