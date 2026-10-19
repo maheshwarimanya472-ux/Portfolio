@@ -64,5 +64,6 @@ document.querySelector(".dialog-close")?.addEventListener("click",()=>caseDialog
 document.querySelector(".sound-toggle")?.addEventListener("click",event=>{const button=event.currentTarget;const isOn=button.dataset.sound!=="on";button.dataset.sound=isOn?"on":"off";button.textContent=isOn?"SOUND ON":"SOUND OFF";button.title=isOn?"Sound effects enabled":"Sound effects disabled";});
 document.addEventListener("keydown",event=>{if(event.key==="Enter" && document.activeElement===document.body && home.classList.contains("active")){goTo("profiles");}});
 document.querySelector("#year").textContent=new Date().getFullYear();
+// Make the intro button and profile selection feel immediate without relying on audio or autoplay.
 const portraitFrame=document.querySelector(".portrait-frame");
 if(portraitFrame){portraitFrame.setAttribute("tabindex","0");portraitFrame.setAttribute("aria-label","Portrait styling preview. Hover or focus to preview the casual look.");}
